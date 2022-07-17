@@ -1,0 +1,19 @@
+name: build time_log.cli
+
+on:
+  push:
+    branch: [trunk]
+  pull_request:
+    branch: [trunk]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: update ubuntu
+        run: sudo apt update -y
+      - name: install cargo
+        run: sudo apt install cargo -y
+      - name: build
+        run: cargo build
